@@ -149,9 +149,3 @@ class DagGeneratorFromYaml:
         self.generate_library_dependencies()
         self.render_template()
 
-DAG_FOLDER = 'C:\\Projetos\\Estudos\\apache-airflow\\airflow\\dags\\'
-TEMPLATE_FOLDER = 'C:\\Projetos\\Estudos\\apache-airflow\\dag-generator-from-yaml\\templates\\'
-
-dag_generator = DagGeneratorFromYaml(dag_template_name = 'dag.template', dag_name = f'{DAG_FOLDER}dag-example.py', templates_path = TEMPLATE_FOLDER)
-dag_generator.read_yaml('dags\\dag01.yaml')
-dag_generator.generate_dag()
