@@ -1,0 +1,6 @@
+{{ task.task_id }} = PythonOperator(
+    task_id = "{{ task.task_id }}",
+    python_callable = {{ task.python_callable }},
+    provide_context = {{ task.provide_context }},
+    dag = dag
+)

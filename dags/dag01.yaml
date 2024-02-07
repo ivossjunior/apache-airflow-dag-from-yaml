@@ -1,0 +1,45 @@
+dag_id: "dag_example"
+libraries_dependency:
+  - name: "custom_lib"
+    alias: "cl"
+default_args:
+  owner: "Ivo"
+  start_date: "2024-01-01"
+catchup: False
+schedule_interval: "@daily"
+tasks:
+  - task_id: "extract"
+    operator_template: "python_operator.template"
+    python_callable: "cl.custom_print"
+    provide_context: True
+  - task_id: "transform"
+    operator_template: "python_operator.template"
+    python_callable: "cl.custom_print"
+    provide_context: True
+    dependencies:
+      - "extract"
+  - task_id: "step_01"
+    operator_template: "python_operator.template"
+    python_callable: "cl.custom_print"
+    provide_context: True
+    dependencies:
+      - "extract"
+  - task_id: "step_02"
+    operator_template: "python_operator.template"
+    python_callable: "cl.custom_print"
+    provide_context: True
+    dependencies:
+      - "step_01"
+  - task_id: "step_03"
+    operator_template: "python_operator.template"
+    python_callable: "cl.custom_print"
+    provide_context: True
+    dependencies:
+      - "step_02"
+  - task_id: "step_04"
+    operator_template: "python_operator.template"
+    python_callable: "cl.custom_print"
+    provide_context: True
+    dependencies:
+      - "step_01"
+      
